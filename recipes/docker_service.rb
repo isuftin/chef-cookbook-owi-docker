@@ -6,10 +6,18 @@ include_recipe 'chef-yum-docker'
 
 node['owi_docker']['service'].each do |service_name, service_properties|
   docker_service service_name do
+    env_vars service_properties['env_vars'] if service_properties['env_vars']
+    auto_restart service_properties['auto_restart'] if service_properties['auto_restart']
     install_method service_properties['install_method'] if service_properties['install_method']
+    repo service_properties['repo'] if service_properties['repo']
+    script_url service_properties['script_url'] if service_properties['script_url']
+    service_manager service_properties['service_manager'] if service_properties['service_manager']
     source service_properties['source'] if service_properties['source']
+    package_version service_properties['package_version'] if service_properties['package_version']
+    package_options service_properties['package_options'] if service_properties['package_options']
     version service_properties['version'] if service_properties['version']
     checksum service_properties['checksum'] if service_properties['checksum']
+    docker_bin service_properties['docker_bin'] if service_properties['docker_bin']
     api_cors_header service_properties['api_cors_header'] if service_properties['api_cors_header']
     bridge service_properties['bridge'] if service_properties['bridge']
     bip service_properties['bip'] if service_properties['bip']
@@ -21,6 +29,7 @@ node['owi_docker']['service'].each do |service_name, service_properties|
     dns service_properties['dns'] if service_properties['dns']
     dns_search service_properties['dns_search'] if service_properties['dns_search']
     exec_driver service_properties['exec_driver'] if service_properties['exec_driver']
+    exec_opts service_properties['exec_opts'] if service_properties['exec_opts']
     fixed_cidr service_properties['fixed_cidr'] if service_properties['fixed_cidr']
     fixed_cidr_v6 service_properties['fixed_cidr_v6'] if service_properties['fixed_cidr_v6']
     group service_properties['group'] if service_properties['group']
@@ -65,6 +74,7 @@ node['owi_docker']['service'].each do |service_name, service_properties|
     mount_flags service_properties['mount_flags'] if service_properties['mount_flags']
     misc_opts service_properties['misc_opts'] if service_properties['misc_opts']
     systemd_opts service_properties['systemd_opts'] if service_properties['systemd_opts']
+    service_timeout service_properties['service_timeout'] if service_properties['service_timeout']
     action %i[create start]
   end
 end
