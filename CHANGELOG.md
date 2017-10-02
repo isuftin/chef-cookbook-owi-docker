@@ -3,6 +3,10 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.0.6] - 2017-00-02
+### Added
+- isuftin@usgs.gov - Added iptables recipe to allow implementors to update IPTables to allow Docker communication
+
 ## [0.0.5] - 2017-09-27
 ### Added
 - isuftin@usgs.gov - Updated attributes checking to see if they exist in the incoming attributes. Some attributes were not being passed through.
