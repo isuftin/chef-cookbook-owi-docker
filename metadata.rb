@@ -13,7 +13,7 @@ long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 issues_url 'https://github.com/USGS-CIDA/chef-cookbook-owi-docker/issues'
 source_url 'https://github.com/USGS-CIDA/chef-cookbook-owi-docker'
 
-version '0.0.3'
+version '0.0.6'
 
 chef_version '>= 12.5' if respond_to?(:chef_version)
 
@@ -21,3 +21,4 @@ supports 'centos', '>= 7.0'
 
 depends 'docker'
 depends 'chef-yum-docker'
+depends 'iptables'
