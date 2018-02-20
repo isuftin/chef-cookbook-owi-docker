@@ -42,6 +42,20 @@ Typically, Docker requires sudo access to perform commands. In order to have use
 array and run the `users_to_docker_group` recipe. This recipe obviously needs to be
 run after the Docker service is installed via the `docker_service` recipe.
 
+### Docker Image
+---
+
+The `owi_docker::docker_image` recipe is a wrapper around the upstream Docker cookbook
+library. Use the same properties in this recipe as you would passing to the Docker
+cookbook docker_image library.
+
+### Docker Container
+---
+
+The `owi_docker::docker_container` recipe is a wrapper around the upstream Docker cookbook
+library. Use the same properties in this recipe as you would passing to the Docker
+cookbook docker_container library. 
+
 ### Docker Machine
 ---
 

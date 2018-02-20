@@ -2,9 +2,13 @@
 # Cookbook Name:: owi_docker
 # Recipe:: docker_service
 
-include_recipe 'chef-yum-docker'
-
 node['owi_docker']['service'].each do |service_name, service_properties|
+  actions = %i[create start]
+
+  if service_properties.key?('actions')
+    actions = [service_properties['actions'].map(&:to_sym)]
+  end
+
   docker_service service_name do
     api_cors_header service_properties['api_cors_header'] unless service_properties['api_cors_header'].nil?
     auto_restart service_properties['auto_restart'] unless service_properties['auto_restart'].nil?
@@ -15,6 +19,7 @@ node['owi_docker']['service'].each do |service_name, service_properties|
     cluster_advertise service_properties['cluster_advertise'] unless service_properties['cluster_advertise'].nil?
     cluster_store_opts service_properties['cluster_store_opts'] unless service_properties['cluster_store_opts'].nil?
     daemon service_properties['daemon'] unless service_properties['daemon'].nil?
+    data_root service_properties['data_root'] unless service_properties['data_root'].nil?
     debug service_properties['debug'] unless service_properties['debug'].nil?
     default_ulimit service_properties['default_ulimit'] unless service_properties['default_ulimit'].nil?
     disable_legacy_registry service_properties['disable_legacy_registry'] unless service_properties['disable_legacy_registry'].nil?
@@ -75,6 +80,7 @@ node['owi_docker']['service'].each do |service_name, service_properties|
     userland_proxy service_properties['userland_proxy'] unless service_properties['userland_proxy'].nil?
     userns_remap service_properties['userns_remap'] unless service_properties['userns_remap'].nil?
     version service_properties['version'] unless service_properties['version'].nil?
-    action %i[create start]
+
+    action actions
   end
 end

@@ -8,3 +8,4 @@ test/mount_path/
 Berksfile.lock
 Gemfile.lock
 .DS_Store
+test/includes
