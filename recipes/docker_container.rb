@@ -53,6 +53,7 @@ node['owi_docker']['container'].each do |container_name, container_properties|
     network_aliases container_properties['network_aliases'] unless container_properties['network_aliases'].nil?
     open_stdin container_properties['open_stdin'] unless container_properties['open_stdin'].nil?
     outfile container_properties['outfile'] unless container_properties['outfile'].nil?
+    port container_properties['port'] unless container_properties['port'].nil?
     port_bindings container_properties['port_bindings'] unless container_properties['port_bindings'].nil?
     pid_mode container_properties['pid_mode'] unless container_properties['pid_mode'].nil?
     privileged container_properties['privileged'] unless container_properties['privileged'].nil?
