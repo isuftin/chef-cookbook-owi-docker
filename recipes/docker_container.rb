@@ -2,6 +2,8 @@
 # Cookbook Name:: owi_docker
 # Recipe:: docker_container
 
+return unless node[:owi_docker].attribute?(:container)
+
 node['owi_docker']['container'].each do |container_name, container_properties|
   actions = %i[run]
 
@@ -82,5 +84,7 @@ node['owi_docker']['container'].each do |container_name, container_properties|
     working_dir container_properties['working_dir'] unless container_properties['working_dir'].nil?
 
     action actions
+
+    subscribes :redeploy, "docker_image[#{container_name}]", :immediately
   end
 end
