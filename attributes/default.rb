@@ -16,7 +16,7 @@ default['owi_docker']['group']['users'] = ['vagrant']
 # Specify the version of Docker Machine required. Otherwise, use the
 # `default['owi_docker']['machine'][binary_location]` to specify your own binary
 # location
-default['owi_docker']['machine']['version'] = '0.13.0'
+default['owi_docker']['machine']['version'] = '0.14.0'
 
 # Specify the version of Docker Compose required. Otherwise, use the
 # `default['owi_docker']['compose'][binary_location]` to specify your own binary
