@@ -7,7 +7,7 @@
 # and
 # https://github.com/chef-cookbooks/docker/blob/master/libraries/docker_service_base.rb
 default['owi_docker']['service']['default']['install_method'] = 'package'
-default['owi_docker']['service']['default']['version'] = '17.12.0'
+default['owi_docker']['service']['default']['version'] = '17.12.1'
 
 # Users in this array will be added to the Docker group so they can use the Docker
 # engine without requiring root access
