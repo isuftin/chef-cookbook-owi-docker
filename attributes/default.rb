@@ -7,7 +7,7 @@
 # and
 # https://github.com/chef-cookbooks/docker/blob/master/libraries/docker_service_base.rb
 default['owi_docker']['service']['default']['install_method'] = 'package'
-default['owi_docker']['service']['default']['version'] = '17.12.1'
+default['owi_docker']['service']['default']['version'] = '18.03.0'
 
 # Users in this array will be added to the Docker group so they can use the Docker
 # engine without requiring root access
@@ -21,7 +21,10 @@ default['owi_docker']['machine']['version'] = '0.14.0'
 # Specify the version of Docker Compose required. Otherwise, use the
 # `default['owi_docker']['compose'][binary_location]` to specify your own binary
 # location
-default['owi_docker']['compose']['version'] = '1.19.0'
+default['owi_docker']['compose']['version'] = '1.21.0'
 
 default['owi_docker']['service'] = {}
 default['owi_docker']['container'] = {}
+
+# When restoring iptables, should the tables be flushed before restoring
+default['owi_docker']['iptables']['restore']['flush'] = false

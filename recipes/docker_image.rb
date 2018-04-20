@@ -2,7 +2,7 @@
 # Cookbook Name:: owi_docker
 # Recipe:: docker_image
 
-return unless node[:owi_docker].attribute?(:image)
+return unless node['owi_docker'].attribute?('image')
 
 node['owi_docker']['image'].each do |image_name, image_properties|
   actions = %i[pull]
