@@ -2,7 +2,7 @@
 # Cookbook Name:: owi_docker
 # Recipe:: docker_container
 
-return unless node[:owi_docker].attribute?(:container)
+return unless node['owi_docker'].attribute?('container')
 
 node['owi_docker']['container'].each do |container_name, container_properties|
   actions = %i[run]
@@ -53,6 +53,8 @@ node['owi_docker']['container'].each do |container_name, container_properties|
     network_disabled container_properties['network_disabled'] unless container_properties['network_disabled'].nil?
     network_mode container_properties['network_mode'] unless container_properties['network_mode'].nil?
     network_aliases container_properties['network_aliases'] unless container_properties['network_aliases'].nil?
+    oom_kill_disable container_properties['oom_kill_disable'] unless container_properties['oom_kill_disable'].nil?
+    oom_score_adj container_properties['oom_score_adj'] unless container_properties['oom_score_adj'].nil?
     open_stdin container_properties['open_stdin'] unless container_properties['open_stdin'].nil?
     outfile container_properties['outfile'] unless container_properties['outfile'].nil?
     port container_properties['port'] unless container_properties['port'].nil?

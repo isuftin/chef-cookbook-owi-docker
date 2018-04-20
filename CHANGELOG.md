@@ -3,6 +3,23 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.0.10] - 2017-04-20
+### Updated
+- isuftin@usgs.gov - Include latest upstream Docker cookbook flags for container recipe
+- isuftin@usgs.gov - Default versions for Docker engine and Docker Compose
+### Added
+- isuftin@usgs.gov - Recipes to save iptables to file and restore. Restore includes
+a delayed recipe to delay until the end of the Chef run
+
+## [0.0.9] - 2017-03-16
+### Updated
+- isuftin@usgs.gov - Default versions for Docker engine and Docker Machine
+- isuftin@usgs.gov - Ensure that not including the `[owi_docker][container]` or
+`[owi_docker][image]` attributes does not result in an error
+### Added
+- isuftin@usgs.gov - Docker container now redeploys when a new hash is pulled down (e.g. latest)
+
+
 ## [0.0.8] - 2017-02-20
 ### Added
 - isuftin@usgs.gov - Port mapping to docker container recipe
