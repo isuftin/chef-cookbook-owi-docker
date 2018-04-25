@@ -3,6 +3,13 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.0.11] - 2017-04-25
+### Updated
+- isuftin@usgs.gov - iptables recipe now works with the  upstream iptables cookbook
+to retain Docker rules that the Docker engine sets. Previously, any other cookbook
+laying down iptables rules via the iptables cookbook would clobber any Docker rules
+because the Docker rules are set manually and not by the iptables cookbook
+
 ## [0.0.10] - 2017-04-20
 ### Updated
 - isuftin@usgs.gov - Include latest upstream Docker cookbook flags for container recipe
