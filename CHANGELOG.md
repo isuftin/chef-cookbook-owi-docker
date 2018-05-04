@@ -3,6 +3,12 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [UNRELEASED]
+### Updated
+- isuftin@usgs.gov - Fix an issue with the upstream iptables cookbook not adding
+a DOCKER chain if there is no Docker rule set in the current iptables. The fix
+is hacky and perilous
+
 ## [0.0.11] - 2017-04-25
 ### Updated
 - isuftin@usgs.gov - iptables recipe now works with the  upstream iptables cookbook
