@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+gem 'archive-tar-minitar'
 gem 'berkshelf'
 gem 'chefspec'
 gem 'docker-api'
