@@ -67,12 +67,11 @@ ruby_block 'restore_iptables_rules' do # ~FC014
     # block which does not necessarily have access to cookbook resources as a first
     # class citizen
     table_hash.each do |table, lines|
-
       # For each table, the iptables cookbook only adds a chain if it finds a line
       # with this regex \-[ADRILFZN]\s+([-a-zA-Z0-9_]+)\s
       # Docker, unless it's running a container with a port mapping
       # will not create a rule like
-      #"-A DOCKER -d 172.17.0.2/32 ! -i docker0 -o docker0 -p tcp -m tcp --dport 3306 -j ACCEPT"
+      # "-A DOCKER -d 172.17.0.2/32 ! -i docker0 -o docker0 -p tcp -m tcp --dport 3306 -j ACCEPT"
       # and because of this, iptables will not create a :DOCKER chain. If that does
       # not happen, the iptables-restore command fails and the chef-run errors out.
       # This check looks to see if the table rules have any lines starting with
@@ -82,8 +81,8 @@ ruby_block 'restore_iptables_rules' do # ~FC014
       # it will not do so
       #
       # Yes, this is hacky. This is a large TODO to FIXME
-      if lines.index{|s| s.include?("-A DOCKER ")} == nil
-        lines.insert(1, ":DOCKER -")
+      if lines.index { |s| s.include?('-A DOCKER ') }.nil?
+        lines.insert(1, ':DOCKER -')
       end
       r = Chef::ResourceResolver.resolve(:iptables_rule).new("docker_table_#{table}", run_context)
       r.lines = lines.join("\n")
