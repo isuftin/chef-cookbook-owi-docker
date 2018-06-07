@@ -5,12 +5,6 @@
 return unless node['owi_docker'].attribute?('image')
 
 node['owi_docker']['image'].each do |image_name, image_properties|
-  actions = %i[pull]
-
-  if image_properties.key?('actions')
-    actions = [image_properties['actions'].map(&:to_sym)]
-  end
-
   docker_image image_name do
     destination image_properties['destination'] unless image_properties['destination'].nil?
     force image_properties['force'] unless image_properties['force'].nil?
@@ -24,6 +18,6 @@ node['owi_docker']['image'].each do |image_name, image_properties|
     source image_properties['source'] unless image_properties['source'].nil?
     tag image_properties['tag'] unless image_properties['tag'].nil?
 
-    action actions
+    action image_properties.key?('action') ? image_properties['action'].map(&:to_sym) : %i[pull]
   end
 end

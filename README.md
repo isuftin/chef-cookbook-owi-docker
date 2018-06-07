@@ -42,6 +42,25 @@ Typically, Docker requires sudo access to perform commands. In order to have use
 array and run the `users_to_docker_group` recipe. This recipe obviously needs to be
 run after the Docker service is installed via the `docker_service` recipe.
 
+### Sysctl
+---
+
+The `owi_docker::sysctl` allows you to pass in updates to the OS sysctl values if needed.
+This uses the upstream sysctl cookbook. Look at .kitchen.yml for an idea of how to
+pass in requirements.
+
+An attributes example would look like:
+
+```
+"sysctl": {
+  "ignore_error": "true",
+  "params": {
+    "net.bridge.bridge-nf-call-ip6tables": "1",
+    "net.bridge.bridge-nf-call-iptables": "1"
+  }
+}
+```
+
 ### Docker Image
 ---
 
@@ -49,12 +68,33 @@ The `owi_docker::docker_image` recipe is a wrapper around the upstream Docker co
 library. Use the same properties in this recipe as you would passing to the Docker
 cookbook docker_image library.
 
+### Docker Service
+---
+
+The `owi_docker::docker_service` recipe is a wrapper around the upstream Docker cookbook
+docker_service library. Use the same properties in this recipe as you would passing to the Docker
+cookbook docker_service library.
+
+### Docker Volume
+---
+
+The `owi_docker::docker_volime` recipe is a wrapper around the upstream Docker cookbook
+docker_volume library. Use the same properties in this recipe as you would passing to the Docker
+cookbook docker_volume library.
+
+### Docker Network
+---
+
+The `owi_docker::docker_network` recipe is a wrapper around the upstream Docker cookbook
+docker_network library. Use the same properties in this recipe as you would passing to the Docker
+cookbook docker_network library.
+
 ### Docker Container
 ---
 
 The `owi_docker::docker_container` recipe is a wrapper around the upstream Docker cookbook
 library. Use the same properties in this recipe as you would passing to the Docker
-cookbook docker_container library. 
+cookbook docker_container library.
 
 ### Docker Machine
 ---
@@ -71,3 +111,11 @@ Docker Compose is also available to be installed. Simply specify which version y
 want using the `default['owi_docker']['compose']['version']` attribute. You can also
 add `default['owi_docker']['compose']['binary_location']` if you wish to install from
 a binary that you host. To install, run the `owi_docker::docker_compose recipe`
+
+### IPTables
+---
+
+This recipe preserves the iptables rules as they are set when the recipe is run.
+The rules are then restored via a delay (end of the Chef run). This ensures that
+the iptables rules for Docker are not wiped by a secondary process. This can happen
+if another cookbook uses the community iptables cookbook to lay down some rules.
