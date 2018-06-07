@@ -3,6 +3,24 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [Unreleased]
+### Updated
+- isuftin@usgs.gov - Cleaned up the logic to define actions going into each resource
+- isuftin@usgs.gov - Added new recipes to the README
+
+### Removed
+- isuftin@usgs.gov - sysctl version constraint
+
+### Added
+- isuftin@usgs.gov - Serverspec testing for docker_network recipe
+- isuftin@usgs.gov - Serverspec testing for docker_volume recipe
+- isuftin@usgs.gov - wrapper recipe for Docker cookbook docker_network resource
+- isuftin@usgs.gov - wrapper recipe for Docker cookbook docker_volume resource
+- isuftin@usgs.gov - sysctl serverspec testing
+- isuftin@usgs.gov - sysctl cookbook dependency to metadata and Berksfile
+- isuftin@usgs.gov - sysctl recipe to work against sysctl cookbook's sysctl_param
+resource
+
 ## [0.0.12] - 2017-05-04
 ### Updated
 - isuftin@usgs.gov - Fix an issue with the upstream iptables cookbook not adding

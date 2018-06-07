@@ -18,13 +18,18 @@ verifier:
 suites:
   - name: default
     run_list:
+      - recipe[iptables]
       - recipe[kernel-modules]
-      - recipe[sysctl::apply]
+      - recipe[owi_docker::sysctl]
       - recipe[owi_docker::docker_service]
       - recipe[owi_docker::docker_compose]
+      - recipe[owi_docker::docker_machine]
       - recipe[owi_docker::users_to_docker_group]
+      - recipe[owi_docker::docker_network]
+      - recipe[owi_docker::docker_volume]
       - recipe[owi_docker::docker_image]
       - recipe[owi_docker::docker_container]
+      - recipe[owi_docker::iptables]
     driver:
       network:
         - ["private_network", {type: "dhcp"}]
@@ -51,10 +56,10 @@ suites:
       "sysctl": {
         "ignore_error": "true",
         "params": {
-          "net.bridge.bridge-nf-call-ip6tables": 1,
-          "net.bridge.bridge-nf-call-iptables": 1,
-          "net.ipv4.conf.all.forwarding": 1,
-          "net.ipv4.ip_forward": 1,
+          "net.bridge.bridge-nf-call-ip6tables": "1",
+          "net.bridge.bridge-nf-call-iptables": "1",
+          "net.ipv4.conf.all.forwarding": "1",
+          "net.ipv4.ip_forward": "1",
           "net.ipv4.ip_local_port_range": "1024 65000",
           "net.ipv4.tcp_tw_reuse": "1",
           "net.ipv4.tcp_fin_timeout": "15",
@@ -76,32 +81,42 @@ suites:
           "net.ipv4.neigh.default.gc_thresh2": "12288",
           "net.ipv4.neigh.default.gc_thresh3": "16384"
         }
-    },
-    "owi_docker" : {
-      "image" : {
-        "nginx" : {
-            "repo" : "nginx",
-            "tag" : "1.13.8"
-        }
       },
-      "container" : {
-        "nginx" : {
-            "repo" : "nginx",
-            "port" : [ "80:80", "443:443" ],
-            "tag" : "1.13.8",
-            "labels" : [
-              "project:default",
-              "software:webserver"
+      "owi_docker" : {
+        "network": {
+          "my_bridge": {
+            "driver": "bridge"
+          }
+        },
+        "volume": {
+          "my_volume": {
+            "action": ["create"]
+          }
+        },
+        "image": {
+          "nginx": {
+              "repo": "nginx",
+              "tag": "1.13.8"
+          }
+        },
+        "container": {
+          "nginx": {
+              "repo": "nginx",
+              "port": [ "80:80", "443:443" ],
+              "tag": "1.13.8",
+              "labels": [
+                "project:default",
+                "software:webserver"
+              ]
+          }
+        },
+        "service": {
+          "default": {
+            "storage_driver": "overlay2",
+            "storage_opts": [
+              "overlay2.override_kernel_check=true"
             ]
-        }
-      },
-      "service" : {
-        "default" : {
-          "storage_driver" : "overlay2",
-          "storage_opts" : [
-            "overlay2.override_kernel_check=true"
-          ]
+          }
         }
       }
     }
-  }

@@ -21,7 +21,7 @@ default['owi_docker']['machine']['version'] = '0.14.0'
 # Specify the version of Docker Compose required. Otherwise, use the
 # `default['owi_docker']['compose'][binary_location]` to specify your own binary
 # location
-default['owi_docker']['compose']['version'] = '1.21.0'
+default['owi_docker']['compose']['version'] = '1.21.1'
 
 default['owi_docker']['service'] = {}
 default['owi_docker']['container'] = {}

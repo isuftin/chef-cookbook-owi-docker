@@ -3,11 +3,6 @@
 # Recipe:: docker_service
 
 node['owi_docker']['service'].each do |service_name, service_properties|
-  actions = %i[create start]
-
-  if service_properties.key?('actions')
-    actions = [service_properties['actions'].map(&:to_sym)]
-  end
 
   docker_service service_name do
     api_cors_header service_properties['api_cors_header'] unless service_properties['api_cors_header'].nil?
@@ -80,7 +75,6 @@ node['owi_docker']['service'].each do |service_name, service_properties|
     userland_proxy service_properties['userland_proxy'] unless service_properties['userland_proxy'].nil?
     userns_remap service_properties['userns_remap'] unless service_properties['userns_remap'].nil?
     version service_properties['version'] unless service_properties['version'].nil?
-
-    action actions
+    action service_properties.key?('action') ? service_properties['action'].map(&:to_sym) : %i[create start]
   end
 end

@@ -21,3 +21,4 @@ supports 'centos', '>= 7.0'
 
 depends 'docker'
 depends 'iptables'
+depends 'sysctl'

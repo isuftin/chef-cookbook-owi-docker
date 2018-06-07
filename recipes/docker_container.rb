@@ -5,12 +5,6 @@
 return unless node['owi_docker'].attribute?('container')
 
 node['owi_docker']['container'].each do |container_name, container_properties|
-  actions = %i[run]
-
-  if container_properties.key?('actions')
-    actions = [container_properties['actions'].map(&:to_sym)]
-  end
-
   docker_container container_name do
     attach_stderr container_properties['attach_stderr'] unless container_properties['attach_stderr'].nil?
     attach_stdin container_properties['attach_stdin'] unless container_properties['attach_stdin'].nil?
@@ -85,7 +79,7 @@ node['owi_docker']['container'].each do |container_name, container_properties|
     volumes_from container_properties['volumes_from'] unless container_properties['volumes_from'].nil?
     working_dir container_properties['working_dir'] unless container_properties['working_dir'].nil?
 
-    action actions
+    action container_properties.key?('action') ? container_properties['action'].map(&:to_sym) : %i[run]
 
     subscribes :redeploy, "docker_image[#{container_name}]", :immediately
   end
