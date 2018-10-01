@@ -3,6 +3,9 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [Unreleased]
+- isuftin@usgs.gov - Added the `setup_docker_repo` property to the docker_service recipe
+
 ## [0.0.13] - 2017-06-07
 ### Updated
 - isuftin@usgs.gov - Cleaned up the logic to define actions going into each resource
