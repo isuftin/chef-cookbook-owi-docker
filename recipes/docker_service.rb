@@ -3,7 +3,6 @@
 # Recipe:: docker_service
 
 node['owi_docker']['service'].each do |service_name, service_properties|
-
   docker_service service_name do
     api_cors_header service_properties['api_cors_header'] unless service_properties['api_cors_header'].nil?
     auto_restart service_properties['auto_restart'] unless service_properties['auto_restart'].nil?
@@ -16,6 +15,7 @@ node['owi_docker']['service'].each do |service_name, service_properties|
     daemon service_properties['daemon'] unless service_properties['daemon'].nil?
     data_root service_properties['data_root'] unless service_properties['data_root'].nil?
     debug service_properties['debug'] unless service_properties['debug'].nil?
+    default_ip_address_pool service_properties['default_ip_address_pool'] unless service_properties['default_ip_address_pool'].nil?
     default_ulimit service_properties['default_ulimit'] unless service_properties['default_ulimit'].nil?
     disable_legacy_registry service_properties['disable_legacy_registry'] unless service_properties['disable_legacy_registry'].nil?
     dns service_properties['dns'] unless service_properties['dns'].nil?
@@ -60,6 +60,7 @@ node['owi_docker']['service'].each do |service_name, service_properties|
     selinux_enabled service_properties['selinux_enabled'] unless service_properties['selinux_enabled'].nil?
     service_manager service_properties['service_manager'] unless service_properties['service_manager'].nil?
     service_timeout service_properties['service_timeout'] unless service_properties['service_timeout'].nil?
+    setup_docker_repo service_properties['setup_docker_repo'] unless service_properties['setup_docker_repo'].nil?
     source service_properties['source'] unless service_properties['source'].nil?
     storage_driver service_properties['storage_driver'] unless service_properties['storage_driver'].nil?
     storage_opts service_properties['storage_opts'] unless service_properties['storage_opts'].nil?
