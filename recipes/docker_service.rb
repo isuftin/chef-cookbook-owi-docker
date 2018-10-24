@@ -15,6 +15,7 @@ node['owi_docker']['service'].each do |service_name, service_properties|
     daemon service_properties['daemon'] unless service_properties['daemon'].nil?
     data_root service_properties['data_root'] unless service_properties['data_root'].nil?
     debug service_properties['debug'] unless service_properties['debug'].nil?
+    default_ip_address_pool service_properties['default_ip_address_pool'] unless service_properties['default_ip_address_pool'].nil?
     default_ulimit service_properties['default_ulimit'] unless service_properties['default_ulimit'].nil?
     disable_legacy_registry service_properties['disable_legacy_registry'] unless service_properties['disable_legacy_registry'].nil?
     dns service_properties['dns'] unless service_properties['dns'].nil?

@@ -3,10 +3,11 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased]
+## [0.0.14] - 2018-10-24
 - isuftin@usgs.gov - Added the `setup_docker_repo` property to the docker_service recipe
+- isuftin@usgs.gov - Added the `default_ip_address_pool` property to the docker_service recipe
 
-## [0.0.13] - 2017-06-07
+## [0.0.13] - 2018-06-07
 ### Updated
 - isuftin@usgs.gov - Cleaned up the logic to define actions going into each resource
 - isuftin@usgs.gov - Added new recipes to the README
@@ -24,20 +25,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - isuftin@usgs.gov - sysctl recipe to work against sysctl cookbook's sysctl_param
 resource
 
-## [0.0.12] - 2017-05-04
+## [0.0.12] - 2018-05-04
 ### Updated
 - isuftin@usgs.gov - Fix an issue with the upstream iptables cookbook not adding
 a DOCKER chain if there is no Docker rule set in the current iptables. The fix
 is hacky and perilous
 
-## [0.0.11] - 2017-04-25
+## [0.0.11] - 2018-04-25
 ### Updated
 - isuftin@usgs.gov - iptables recipe now works with the  upstream iptables cookbook
 to retain Docker rules that the Docker engine sets. Previously, any other cookbook
 laying down iptables rules via the iptables cookbook would clobber any Docker rules
 because the Docker rules are set manually and not by the iptables cookbook
 
-## [0.0.10] - 2017-04-20
+## [0.0.10] - 2018-04-20
 ### Updated
 - isuftin@usgs.gov - Include latest upstream Docker cookbook flags for container recipe
 - isuftin@usgs.gov - Default versions for Docker engine and Docker Compose
@@ -45,7 +46,7 @@ because the Docker rules are set manually and not by the iptables cookbook
 - isuftin@usgs.gov - Recipes to save iptables to file and restore. Restore includes
 a delayed recipe to delay until the end of the Chef run
 
-## [0.0.9] - 2017-03-16
+## [0.0.9] - 2018-03-16
 ### Updated
 - isuftin@usgs.gov - Default versions for Docker engine and Docker Machine
 - isuftin@usgs.gov - Ensure that not including the `[owi_docker][container]` or
@@ -54,18 +55,18 @@ a delayed recipe to delay until the end of the Chef run
 - isuftin@usgs.gov - Docker container now redeploys when a new hash is pulled down (e.g. latest)
 
 
-## [0.0.8] - 2017-02-20
+## [0.0.8] - 2018-02-20
 ### Added
 - isuftin@usgs.gov - Port mapping to docker container recipe
 
-## [0.0.7] - 2017-02-20
+## [0.0.7] - 2018-02-20
 ### Added
 - isuftin@usgs.gov - Docker Image wrapper recipe
 - isuftin@usgs.gov - Docker Container wrapper recipe
 ### Updated
 - isuftin@usgs.gov - Kitchen configuration and styling
 
-## [0.0.6] - 2017-01-02
+## [0.0.6] - 2018-01-02
 ### Added
 - isuftin@usgs.gov - Added iptables recipe to allow implementors to update IPTables to allow Docker communication
 
