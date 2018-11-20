@@ -3,6 +3,18 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.0.15] - 2018-11-20
+### Added
+- isuftin@usgs.gov - file_utils recipe allowing creation of directories and pulling
+of files from remote resources as well as S3 buckets
+- isuftin@usgs.gov - Inspec testing to work with file_utils recipe
+- isuftin@usgs.gov - AWS cookbook dependency https://supermarket.chef.io/cookbooks/aws
+
+### Updated
+- isuftin@usgs.gov - Updated the version of Docker to install
+- isuftin@usgs.gov - Updated the version of Docker Compose to install
+- isuftin@usgs.gov - Updated the version of Docker Machine to install
+
 ## [0.0.14] - 2018-10-24
 - isuftin@usgs.gov - Added the `setup_docker_repo` property to the docker_service recipe
 - isuftin@usgs.gov - Added the `default_ip_address_pool` property to the docker_service recipe

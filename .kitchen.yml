@@ -28,6 +28,7 @@ suites:
       - recipe[owi_docker::docker_network]
       - recipe[owi_docker::docker_volume]
       - recipe[owi_docker::docker_image]
+      - recipe[owi_docker::file_utils]
       - recipe[owi_docker::docker_container]
       - recipe[owi_docker::iptables]
     driver:
@@ -87,6 +88,25 @@ suites:
           "my_bridge": {
             "driver": "bridge"
           }
+        },
+        "filesystem": {
+          "dirs": [
+              {
+                "path": "/tmp/test",
+                "owner": "vagrant",
+                "group": "vagrant",
+                "mode": "0644"
+              }
+          ],
+          "remote_files": [
+            {
+              'source': 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
+              'path': '/tmp/dummy.pdf',
+              "owner": "vagrant",
+              "group": "vagrant",
+              "mode": "0644"
+            }
+          ]
         },
         "volume": {
           "my_volume": {
