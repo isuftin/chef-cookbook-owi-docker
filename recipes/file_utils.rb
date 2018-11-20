@@ -19,13 +19,10 @@ node['owi_docker']['filesystem']['s3'].each do |s3|
   paths = s3['paths']
 
   paths.each do |path_set|
-    remote_path = path_set['remote']
-    local_path = path_set['local']
-    sensitive =  path_set['sensitive'] || true
-    aws_s3_file local_path do
+    aws_s3_file path_set['local'] do
       bucket bucket
-      remote_path remote_path
-      sensitive sensitive
+      remote_path path_set['remote']
+      sensitive path_set['sensitive'] || true
     end
   end
 end
