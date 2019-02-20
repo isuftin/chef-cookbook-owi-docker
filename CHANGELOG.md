@@ -3,6 +3,13 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.0.16] - 2019-02-20
+### Added
+- isuftin@usgs.gov - systemd_socket_opts option to docker_service recipe to match with
+  latest upstream docker cookbook
+- isuftin@usgs.gov - shm_size option to docker_container recipe to match with
+  latest upstream docker cookbook
+
 ## [0.0.15] - 2018-11-20
 ### Added
 - isuftin@usgs.gov - file_utils recipe allowing creation of directories and pulling

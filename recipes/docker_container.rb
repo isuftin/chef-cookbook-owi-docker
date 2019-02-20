@@ -63,6 +63,7 @@ node['owi_docker']['container'].each do |container_name, container_properties|
     ro_rootfs container_properties['ro_rootfs'] unless container_properties['ro_rootfs'].nil?
     runtime container_properties['runtime'] unless container_properties['runtime'].nil?
     security_opt container_properties['security_opt'] unless container_properties['security_opt'].nil?
+    shm_size container_properties['shm_size'] unless container_properties['shm_size'].nil?
     signal container_properties['signal'] unless container_properties['signal'].nil?
     stdin_once container_properties['stdin_once'] unless container_properties['stdin_once'].nil?
     sysctls container_properties['sysctls'] unless container_properties['sysctls'].nil?
