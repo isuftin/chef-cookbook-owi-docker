@@ -65,6 +65,7 @@ node['owi_docker']['service'].each do |service_name, service_properties|
     storage_driver service_properties['storage_driver'] unless service_properties['storage_driver'].nil?
     storage_opts service_properties['storage_opts'] unless service_properties['storage_opts'].nil?
     systemd_opts service_properties['systemd_opts'] unless service_properties['systemd_opts'].nil?
+    systemd_socket_opts service_properties['systemd_socket_opts'] unless service_properties['systemd_socket_opts'].nil?
     tls_ca_cert service_properties['tls_ca_cert'] unless service_properties['tls_ca_cert'].nil?
     tls_client_cert service_properties['tls_client_cert'] unless service_properties['tls_client_cert'].nil?
     tls_client_key service_properties['tls_client_key'] unless service_properties['tls_client_key'].nil?
