@@ -28,7 +28,6 @@ begin
       uuid mount_object['uuid'] unless mount_object['uuid'].nil?
       file mount_object['file'] unless mount_object['file'].nil?
       vg mount_object['vg'] unless mount_object['vg'].nil?
-      fstype mount_object['fstype'] unless mount_object['fstype'].nil?
       mkfs_options mount_object['mkfs_options'] unless mount_object['mkfs_options'].nil?
       size mount_object['size'] unless mount_object['size'].nil?
       sparse mount_object['sparse'] unless mount_object['sparse'].nil?
