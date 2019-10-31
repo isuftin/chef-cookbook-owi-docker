@@ -10,6 +10,6 @@ node['sysctl']['params'].each do |param, value|
   sysctl param do
     key param
     value value
-    ignore_errors true
+    ignore_error true
   end
 end
