@@ -90,6 +90,15 @@ suites:
           }
         },
         "filesystem": {
+          "mounts": [
+            {
+              "name": "test",
+              "device": "/dev/loop7",
+              "file": "/mnt/filesystem-on-a-filesystem.file",
+              "mount": "/mnt/filesystem-on-a-filesystem",
+              "size": "20000"
+            }
+          ],
           "dirs": [
               {
                 "path": "/tmp/test",

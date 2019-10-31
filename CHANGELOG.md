@@ -3,6 +3,23 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.1.0] - 2019-10-31
+### Added
+- isuftin@usgs.gov - dependency on filesystem cookbook, adds lvm cookbook depdency
+- isuftin@usgs.gov - included the ability to mount filesystems within the file_utils
+  recipe
+
+### Changed
+- isuftin@usgs.gov - using Chef sysctl resource instead of third party cookbook
+- isuftin@usgs.gov - now requires Chef >= 14.0
+- isuftin@usgs.gov - beautifying
+- isuftin@usgs.gov - updated docker, docker-compose and docker-machine versions in
+  default attributes
+
+
+### Removed
+- isuftin@usgs.gov - depency on sysctl cookbook
+
 ## [0.0.16] - 2019-02-20
 ### Added
 - isuftin@usgs.gov - systemd_socket_opts option to docker_service recipe to match with

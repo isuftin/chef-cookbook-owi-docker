@@ -6,6 +6,7 @@ AllCops:
     - Rakefile
     - Thorfile
     - Guardfile
+    - recipes/*.rb
   Exclude:
     - vendor/**/*
     - test/**/*

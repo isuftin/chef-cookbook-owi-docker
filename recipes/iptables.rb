@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # Cookbook Name:: owi_docker
 # Recipe:: iptables
@@ -50,6 +52,7 @@ ruby_block 'restore_iptables_rules' do # ~FC014
         # If the line does not contain the word "docker" on it, the rule does not
         # deal with docker and I don't care about it
         next unless line.downcase.include?('docker')
+
         # If it does deal with docker, I save it to the current table array
         table_hash[current_table] << line.tr("\n", '')
       end
@@ -81,9 +84,7 @@ ruby_block 'restore_iptables_rules' do # ~FC014
       # it will not do so
       #
       # Yes, this is hacky. This is a large TODO to FIXME
-      if lines.index { |s| s.include?('-A DOCKER ') }.nil?
-        lines.insert(1, ':DOCKER -')
-      end
+      lines.insert(1, ':DOCKER -') if lines.index { |s| s.include?('-A DOCKER ') }.nil?
       r = Chef::ResourceResolver.resolve(:iptables_rule).new("docker_table_#{table}", run_context)
       r.lines = lines.join("\n")
       r.table = table.to_sym
