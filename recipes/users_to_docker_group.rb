@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # Cookbook Name:: owi_docker
 # Recipe:: users_to_docker_group
@@ -7,7 +9,7 @@
 
 service_config = node['owi_docker']['service']
 
-docker_group = service_config['group'] ? service_config['group'] : 'docker'
+docker_group = service_config['group'] || 'docker'
 
 # Added a guard because with the modify action, if the group does not yet exist,
 # this will cause an error. If this recipe is run before docker_service, the docker

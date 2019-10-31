@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # Cookbook Name:: owi_docker
 # Recipe:: sysctl
@@ -5,9 +7,9 @@
 # and parameters specific to that cookbook coming from the default attributes.
 
 node['sysctl']['params'].each do |param, value|
-  sysctl_param param do
+  sysctl param do
     key param
     value value
-    only_if "sysctl -n #{param}"
+    ignore_error true
   end
 end

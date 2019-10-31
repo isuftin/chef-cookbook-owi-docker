@@ -7,7 +7,7 @@
 # and
 # https://github.com/chef-cookbooks/docker/blob/master/libraries/docker_service_base.rb
 default['owi_docker']['service']['default']['install_method'] = 'package'
-default['owi_docker']['service']['default']['version'] = '18.06.1'
+default['owi_docker']['service']['default']['version'] = '19.03.4'
 
 # Users in this array will be added to the Docker group so they can use the Docker
 # engine without requiring root access
@@ -16,12 +16,16 @@ default['owi_docker']['group']['users'] = ['vagrant']
 # Specify the version of Docker Machine required. Otherwise, use the
 # `default['owi_docker']['machine'][binary_location]` to specify your own binary
 # location
-default['owi_docker']['machine']['version'] = '0.16.0'
+#
+# See what's available at https://github.com/docker/machine/releases
+default['owi_docker']['machine']['version'] = '0.16.2'
 
 # Specify the version of Docker Compose required. Otherwise, use the
 # `default['owi_docker']['compose'][binary_location]` to specify your own binary
 # location
-default['owi_docker']['compose']['version'] = '1.23.0'
+#
+# See what's available at https://github.com/docker/compose/releases
+default['owi_docker']['compose']['version'] = '1.24.1'
 
 default['owi_docker']['service'] = {}
 default['owi_docker']['container'] = {}
@@ -70,3 +74,19 @@ default['owi_docker']['filesystem']['s3'] = []
 #   }
 # ]
 default['owi_docker']['filesystem']['remote_files'] = []
+
+# Create block device filesystems. This feature is a wrapper around the FileSystem
+# cookbook. You can create 1..n mounts by placing mount definitions within
+# an array like in the example.
+#
+# For available attributes, see https://github.com/sous-chefs/filesystem
+# Example:
+# default['owi_docker']['filesystem']['mounts'] = [
+# {
+#   "name": "test",
+#   "device": "/dev/loop7",
+#   "file": "/mnt/filesystem-on-a-filesystem.file",
+#   "mount": "/mnt/filesystem-on-a-filesystem",
+#   "size": "20000"
+# }]
+default['owi_docker']['filesystem']['mounts'] = []

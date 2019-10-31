@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # Cookbook Name:: owi_docker
 # Recipe:: save_iptables
