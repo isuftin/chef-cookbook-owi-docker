@@ -46,7 +46,11 @@ default['owi_docker']['iptables']['restore']['flush'] = false
 # ]
 default['owi_docker']['filesystem']['dirs'] = []
 
-# Pull down remote files from S3 using the
+# Pull down remote files from S3
+# Note that 'mode', 'user' and 'group' are optional. These signify the permissions,
+# user and group ownership on the file written. If not specified, the user and group
+# will be 'root' and the permissions will be 0644
+#
 # Example:
 #   default['owi_docker']['filesystem']['s3'] = [
 #       {
@@ -58,7 +62,10 @@ default['owi_docker']['filesystem']['dirs'] = []
 #           },
 #           {
 #             'remote': 'some/other/remote/file/2.txt',
-#             'local': '/tmp/data/2.txt'
+#             'local': '/tmp/data/2.txt',
+#             'user': 'nginx',
+#             'group': 'nginx',
+#             'mode': '0664'
 #           }
 #         ]
 #       }

@@ -6,5 +6,5 @@ metadata
 
 cookbook 'kernel-modules'
 cookbook 'filesystem'
-cookbook 'docker'
-cookbook 'iptables'
+cookbook 'docker', '~> 4.10.0'
+cookbook 'iptables', '~> 4.5.0'

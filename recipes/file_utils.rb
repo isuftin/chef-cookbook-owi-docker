@@ -65,6 +65,12 @@ begin
         remote_path path_set['remote']
         sensitive path_set['sensitive'] || true
       end
+
+      file path_set['local'] do
+        mode path_set['mode'] || '0644'
+        owner path_set['owner'] || 'root'
+        group path_set['group'] || 'root'
+      end
     end
   end
 rescue NoMethodError
